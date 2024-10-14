@@ -2,17 +2,22 @@ import { deleteArtist, getArtist, getArtists } from "./modules/artistApi.js";
 import { renderArtist } from "./modules/artistUI.js";
 
 let artistsContainer = document.querySelector("#artists-container");
-// let favoriteArtistContainer = document.querySelector("#favorite-artist");
+let createArtistForm = document.querySelector("#create-artist-form");
 
 async function createArtistCards() {
   artistsContainer.innerHTML = "";
   let artists = await getArtists();
+  console.log(artists);
   // aggiorno il DOM con le card degli artisti
   artists.map((artist) => {
     // funzione che prende un artista, crea la card e la inserisce in un contenitore
     renderArtist(artist, artistsContainer, handleDeleteArtist);
   });
 
+  createArtistForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    console.dir(createArtistForm);
+  });
   // renderArtist(
   //   { name: "the who", description: "british band" },
   //   favoriteArtistContainer

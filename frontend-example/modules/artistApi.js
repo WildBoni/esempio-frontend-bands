@@ -27,4 +27,11 @@ async function deleteArtist(artistId) {
   console.log(artist);
 }
 
+async function createArtist(artist) {
+  let response = await fetch(`${backendUrl}/api/artists`, {
+    method: "POST",
+    // passare le info del form
+  });
+}
+
 export { getArtists, getArtist, deleteArtist };
