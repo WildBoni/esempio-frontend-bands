@@ -1,6 +1,4 @@
-import { deleteArtist } from "./artistApi.js";
-
-export function renderArtist(artist, container) {
+export function renderArtist(artist, container, cancellaArtista) {
   console.log(artist);
   let artistContainer = document.createElement("article");
   let artistTitle = document.createElement("h2");
@@ -12,9 +10,7 @@ export function renderArtist(artist, container) {
   deleteArtistButton.textContent = "Delete artist";
 
   deleteArtistButton.addEventListener("click", () => {
-    deleteArtist(artist._id);
-    // richiamare getArtists
-    // aggiornare la UI
+    cancellaArtista(artist._id);
   });
 
   artistContainer.append(artistTitle);
