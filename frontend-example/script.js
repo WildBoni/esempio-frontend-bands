@@ -21,7 +21,7 @@ async function createArtistCards() {
 createArtistCards();
 
 function handleDeleteArtist(id) {
-  deleteArtist(artist._id).then((data) => {
+  deleteArtist(id).then((data) => {
     createArtistCards();
     alert(data.message);
   });
