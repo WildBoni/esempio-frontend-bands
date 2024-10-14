@@ -1,4 +1,4 @@
-import { deleteArtist, getArtist, getArtists } from "./modules/artistApi.js";
+import { deleteArtist, createArtist, getArtists } from "./modules/artistApi.js";
 import { renderArtist } from "./modules/artistUI.js";
 
 let artistsContainer = document.querySelector("#artists-container");
@@ -16,7 +16,12 @@ async function createArtistCards() {
 
   createArtistForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    console.dir(createArtistForm);
+    // ottengo un oggetto con coppie chiave/valore di tutti i campi del form
+    let artistInputFields = new FormData(createArtistForm);
+    createArtist(artistInputFields).then((data) => {
+      createArtistCards();
+    });
+    // console.log(artistInputFields);
   });
   // renderArtist(
   //   { name: "the who", description: "british band" },

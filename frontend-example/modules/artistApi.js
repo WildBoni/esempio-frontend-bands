@@ -31,7 +31,10 @@ async function createArtist(artist) {
   let response = await fetch(`${backendUrl}/api/artists`, {
     method: "POST",
     // passare le info del form
+    body: artist,
   });
+  let createdArtist = await response.json();
+  return createdArtist;
 }
 
-export { getArtists, getArtist, deleteArtist };
+export { getArtists, getArtist, deleteArtist, createArtist };
